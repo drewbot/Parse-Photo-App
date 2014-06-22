@@ -13,7 +13,7 @@ var CardView = Parse.View.extend({
 
     
     initialize: function() {
-		$('.card-view-container').append(this.el);
+		$('.card-view-append').append(this.el);
 		console.log('cardview model is', this.model )
 		this.render();
     },
@@ -25,9 +25,9 @@ var CardView = Parse.View.extend({
 		return this;
     },
 
-    showDetails: function () {
-		details = new DetailView({model: this.model});
-		$('.detail-view-container').show();
+    showDetails: function (id) {
+		detailView = new DetailView({model: this.model});
+		$('.detail-view-append').show();
 	}
 
 });
@@ -40,38 +40,45 @@ var DetailView = Parse.View.extend({
     // The DOM events specific to an item.
     // save will call the updateModel function and new will add a new photo to the model
 	events: {
-	"click .save-button": "updateModel"
+	// "click .save-button": "updateModel",
+	"click .close-detail-view" 	:"closeDetailView"
 	},
+
 	// When a view instance is created listen to the PostCollection instance...
 	// .. and add a function passing the 'photo' argument...
-
-    
 	initialize: function(){
-	
+		$('.detail-view-append').append(this.el);
+		this.render();
+
 	},
 
 	render: function(){
 		// pass current model attributes, pulled from the template, through the html method attached to this.$el
 		var renderedTemplate = this.template(this.model.attributes);
 		this.$el.html(renderedTemplate);
-		return this;
+		// return this;
 	},
 
-	updateModel: function(){
+	closeDetailView: function(){
+		$('.detail-view-append').hide();
+		detailView.remove();
+	}
 
-		var that = this;
+	// updateModel: function(){
 
-		this.model.set({
-		  url:      this.$el.find('.url-input').val(),
-		  caption:  this.$el.find('.caption-input').val()
-		});
+	// 	var that = this;
 
-		photos.add(this.model);
+	// 	this.model.set({
+	// 	  url:      this.$el.find('.url-input').val(),
+	// 	  caption:  this.$el.find('.caption-input').val()
+	// 	});
 
-		this.model.save().done(function(){
-		  that.$el.find('.status').html('Saved!');
-		});
-	},
+	// 	photos.add(this.model);
+
+	// 	this.model.save().done(function(){
+	// 	  that.$el.find('.status').html('Saved!');
+	// 	});
+	// },
 
 });
 

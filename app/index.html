@@ -30,21 +30,24 @@
 
         <!-- Template render -->
 
-        <div class="card-view-container"></div>
+        <div class="card-view-append"></div>
 
-        <div class="detail-view-container"></div>
+        <div class="detail-view-append"></div>
 
         <!-- Templates -->
 
+        <!-- Why do I need "attributes" here and not in detail-view? -->
         <script type="text/template" class="card-view-instance">
-            <a href="#detail/<%= id %>"><img src="<%= attributes.image %>" class="card-image"></a>
+          <div class="card-view-container">
+            <a href="#detail/<%= id %>"><img src="<%= attributes.image %>" class="card-image details"></a>
             <p><%= attributes.caption %></p>
+          </div>
         </script>
 
         <script type="text/template" class="detail-view-instance">
-            <div>
-              <img src="<%= url %>" class=""></a>
-            </div>
+            <img src="<%= image %>">
+            <p><%= caption %></p>
+            <a href="#"><button class="close-detail-view">Close</button></a>
         </script>
 
       </div>
