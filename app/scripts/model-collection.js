@@ -4,7 +4,6 @@ Parse.initialize("4FnGMdPeycL11B4OpfMcbfdKiYf9CWklxQk2w0sx", "uEv4m6Z0XNPckrRlIb
 
 var PostModel = Parse.Object.extend({
 	className: "drewbot",
-	idAttribute: '_id',
 
 	defaults: {
 		"image"		: "http://placehold.it/300x300",

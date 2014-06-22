@@ -13,34 +13,47 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <title>Parse-Photo-App</title>
         <!-- endbuild -->
     </head>
     <body>
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+      <div class="container">
 
-        <input type="file" id="profilePhotoFileUpload">
+        <!-- Input -->
+
+        <input type="file" class="image-upload">
+        <input type="text" placeholder="add caption"class="caption-input"></input>
+        <button class="save-file">Save</button>
+
+        <!-- Template render -->
 
         <div class="card-view-container"></div>
 
         <div class="detail-view-container"></div>
 
+        <!-- Templates -->
+
         <script type="text/template" class="card-view-instance">
-            <a href="#detail/<%= _id %>"><img src="<%= url %>" class="card-image"></a>
+            <a href="#detail/<%= id %>"><img src="<%= attributes.image %>" class="card-image"></a>
+            <p><%= attributes.caption %></p>
         </script>
 
         <script type="text/template" class="detail-view-instance">
             <div>
-              <img src="<%= url %>" class="card-image"></a>
-              <p><%= caption %></p>
+              <img src="<%= url %>" class=""></a>
             </div>
         </script>
+
+      </div>
         
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -59,8 +72,8 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <script src="scripts/model-collection.js"></script>
-        <script src="scripts/router.js"></script>
         <script src="scripts/view.js"></script>
+        <script src="scripts/router.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -2,6 +2,10 @@ console.log('router');
 
 var posts = new PostCollection();
 
+var appView;
+
+var detailView;
+
 var AppRouter = Parse.Router.extend({
  
   routes: {
@@ -13,38 +17,31 @@ var AppRouter = Parse.Router.extend({
  
   initialize: function () {
     console.log('AppRouter was just created!');
-	
-	this.fetchPromise = posts.fetch();
-
-	this.fetchPromise.done(function(){
-	  posts.each(function(card){
-
-	    new AppView({model: card});
-
-	  });
-
-	});
 
   },
 
   // Instantiate a new AppView
-  renderAppView: function (id) {
-  	this.fetchPromise.done(function(){
-	    appViewInstance = new DetailView({ model: posts.get(id) });
-	});
+  renderAppView: function () {
+  	if (!appView) {
+  		appView = new AppView();
+  	};
+
+  	if (detailView) {
+  		detailView.remove();
+  	}
   	
   },
 
   // Instantiate a new DetailView
   renderDetailView: function (id) {
-  	this.fetchPromise.done(function(){
-	    detailViewInstance = new DetailView({ model: photos.get(id) });
-	});
-  	
+  	if (!detailView) {
+	  	detailView = new DetailView({model: this.model});
+		$('.detail-view-container').show();
+	};
   }
  
 });
 
-var app = new AppRouter;
+var appRouter = new AppRouter;
 
 Parse.history.start({pushstate: true});
