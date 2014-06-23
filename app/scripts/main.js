@@ -1,5 +1,9 @@
 console.log('main');
 
+$('.new').click(function(){
+	$('.add-new-container').toggleClass('show-new');
+});
+
 /////////// Upload a file to the database/////////////////////////
 
 
@@ -45,5 +49,48 @@ $('.save-file').click(function(){
 	};
 
 })
+
+// var canvas = new fabric.Canvas('c');
+// var imgElement = $('detail-image').attr( "src" );
+// var imgInstance = fabric.Image.fromURL(imgElement, function(oImg) {
+//   canvas.add(oImg);
+// });
+
+/////
+var canvas = new fabric.Canvas('c');
+////////
+var text = new fabric.Text('hello world', { left: 100, top: 100 });
+canvas.add(text);
+///////
+// var imgElement = document.getElementById('detail-image');
+// var imgInstance = new fabric.Image(imgElement, {
+//   left: 100,
+//   top: 100,
+//   angle: 30,
+//   opacity: 0.85
+// });
+// canvas.add(imgInstance);
+/////////
+
+// fabric.Image.fromURL('http://static.tumblr.com/23b2d323b41fe20cfd3ee8470e6e8c23/fmfoldl/p4zmreej3/tumblr_static_1363794435702.png', function(img) {
+//   img.scale(.4)
+//   img.top = 150,
+//   img.left = 70,
+//   canvas.add(img);
+// });
+
+	////
+
+// fabric.Image.fromURL('pug.jpg', function(img) {
+
+//   // add filter
+//   img.filters.push(new fabric.Image.filters.Grayscale());
+
+//   // apply filters and re-render canvas when done
+//   img.applyFilters(canvas.renderAll.bind(canvas));
+
+//   // add image onto canvas
+//   canvas.add(img);
+// });
 
 

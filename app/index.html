@@ -23,17 +23,23 @@
       <div class="container">
 
         <!-- Input -->
-
-        <input type="file" class="image-upload">
-        <input type="text" placeholder="add caption"class="caption-input"></input>
-        <button class="save-file">Save</button>
+        <div class="nav">
+          <button><a href="#" class="new">add new image</a></button>
+          <div class="add-new-container">
+            <input type="file" class="image-upload">
+            <input type="text" placeholder="add caption" class="caption-input"></input>
+            <button class="save-file">Save</button>
+          </div>
+        </div>
 
         <!-- Template render -->
+        <div class="view-container">
+          <div class="card-view-append"></div>
+          <div class="detail-view-append"></div>
+        </div>
+      </div>
 
-        <div class="card-view-append"></div>
-
-        <div class="detail-view-append"></div>
-
+      <canvas id="c"></canvas>
         <!-- Templates -->
 
         <!-- Why do I need "attributes" here and not in detail-view? -->
@@ -45,18 +51,19 @@
         </script>
 
         <script type="text/template" class="detail-view-instance">
-            <img src="<%= image %>">
+          <div class="detail-view-container">
+            <img src="<%= image %>" id="detail-image">
             <p><%= caption %></p>
             <a href="#"><button class="close-detail-view">Close</button></a>
+          </div>
         </script>
-
-      </div>
         
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="scripts/fabric.js-1.4.7/dist/fabric.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
