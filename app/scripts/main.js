@@ -94,3 +94,6 @@ canvas.add(text);
 // });
 
 
+// Save with canvas
+// var dataURL = canvas.toDataURL();
+
